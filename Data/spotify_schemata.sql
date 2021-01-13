@@ -2,7 +2,7 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-CREATE TABLE "Top_Songs_2010-2019" (
+CREATE TABLE "songs2010-2019" (
     "title" varchar   NOT NULL,
     "artist" varchar   NOT NULL,
     "top_genre" varchar   NOT NULL,
@@ -18,4 +18,5 @@ CREATE TABLE "Top_Songs_2010-2019" (
     "speechiness" int   NOT NULL,
     "popularity" int   NOT NULL
 );
+
 
