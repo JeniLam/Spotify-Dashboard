@@ -40,7 +40,8 @@ d3.json(url).then((data) => {
         plot_bgcolor:"black",
         paper_bgcolor:"#FFF3",
         xaxis: {
-            tickcolor: "white"
+            tickcolor: "white",
+            showticklabels: true
         },
         yaxis: {
             tickcolor: "white"
