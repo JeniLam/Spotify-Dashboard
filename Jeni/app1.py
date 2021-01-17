@@ -33,25 +33,25 @@ results = session.query(songs.title, songs.artist, songs.top_genre, songs.year, 
 # close session
 session.close()
 
-# # create a list of dictionaries from the row data and append to a list of all data
-all_data = []
+# # # create a list of dictionaries from the row data and append to a list of all data
+# all_data = []
 
-for title, artist, top_genre, year, energy, dancability, bpm, dB, duration_in_seconds, acousticness, popularity in results:
-        music_dict = {}
-        music_dict['title'] = title
-        music_dict['artist'] = artist
-        music_dict['top_genre'] = top_genre
-        music_dict['year'] = year
-        music_dict['energy'] = energy
-        music_dict['dancability'] = dancability
-        music_dict['bpm'] = bpm
-        music_dict['dB'] = dB
-        music_dict['duration_in_seconds'] = duration_in_seconds
-        music_dict['acousticness'] = acousticness
-        music_dict['popularity'] = popularity
-        all_data.append(music_dict)
-print(all_data[0])
-print(all_data[1])
+# for title, artist, top_genre, year, energy, dancability, bpm, dB, duration_in_seconds, acousticness, popularity in results:
+#         music_dict = {}
+#         music_dict['title'] = title
+#         music_dict['artist'] = artist
+#         music_dict['top_genre'] = top_genre
+#         music_dict['year'] = year
+#         music_dict['energy'] = energy
+#         music_dict['dancability'] = dancability
+#         music_dict['bpm'] = bpm
+#         music_dict['dB'] = dB
+#         music_dict['duration_in_seconds'] = duration_in_seconds
+#         music_dict['acousticness'] = acousticness
+#         music_dict['popularity'] = popularity
+#         all_data.append(music_dict)
+# print(all_data[0])
+# print(all_data[1])
 
 
 
@@ -68,9 +68,6 @@ def welcome():
     return (render_template("index.html")
             )
 
-# @app.route("/table1")
-# def table_1_assembly():
-#     genre = 
 
 @app.route("/api/v1.0/data")
 def all_data():
