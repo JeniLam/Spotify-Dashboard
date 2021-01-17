@@ -1,42 +1,54 @@
 url= "/api/v1.0/data"
-console.log(url)
+// console.log(url)
 
-// create barchart
+// create chart data
 d3.json(url).then((data) => {
     console.log(data)
 
-    var year = []
-    var genre = []
-    var artist = []
-// Mod 14 - Day 2 exercise 8 - pull values out of object
-    data.forEach((d) => {
-        Object.entries(d).forEach(([key, value]) => {
-            if (key === "year") {
-                year.push(value)
-            }
-            else if (key ==="top_genre") {
-                genre.push(value)
-            }
-            else if (key === "artist") {
-                artist.push(value)
-            }
-        })
-    });
-
+    var yearMap = data.map(d => d.year);
+    console.log (yearMap)
+    // get unique years for x axis in bar chart
+    // https://stackoverflow.com/questions/5667888/counting-the-occurrences-frequency-of-array-elements
+    var yearCounts = {};
      
-    // var trace1 = {
-    //     x = data.year,
-    //     y = data.top_genre,
-    //     type: "bar"
-    // };
+    for (var i =0; i < yearMap.length; i++) {
+        if(!yearCounts[yearMap[i]])
+        yearCounts[yearMap[i]] = 0;
+        ++yearCounts[yearMap[i]];
+    }
 
-    // var bardata = [trace1];
+    console.log(yearCounts)
+    console.log(Object.keys(yearCounts))
+    console.log(Object.values(yearCounts))
 
-    // var barlayout = {
-    //     title: "Top Genre by Year",
-    //     xaxis: {title: "Year"},
-    //     yaxis: {title: "Count of Genres"}
-    // };
+    
+    var trace1 = {
+        x : Object.keys(yearCounts),
+        y : Object.values(yearCounts),
+        type: "bar",
+        marker: {
+            color: 'rgb(142,124,195)'
+        },
+        name: "Number of Tracks by Year Released"
+    };
 
-    // Plotly.newPlot("bar", bardata, barlayout)
+    var bardata = [trace1];
+
+    var barlayout = {
+        title: "Number of Tracks by Year Released",
+        // https://stackoverflow.com/questions/48798507/change-the-background-color-of-a-plot
+        plot_bgcolor:"black",
+        paper_bgcolor:"#FFF3",
+        xaxis: {
+            tickcolor: "white"
+        },
+        yaxis: {
+            tickcolor: "white"
+        },
+        font: {
+            color: "white"
+        }
+    };
+
+    Plotly.newPlot("bar", bardata, barlayout)
 });
