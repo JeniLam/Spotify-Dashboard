@@ -117,7 +117,7 @@ d3.json(url).then((data) => {
          },
         yaxis: { 
             title: "Number of Tracks on Playlist",
-            range: [0, 1000]
+            // range: [0, 1000]
          },
         showlegend: false,
         font: {
