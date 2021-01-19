@@ -74,7 +74,7 @@ def playlist_analysis():
     return (render_template("page03.html")
             )
 
-@app.route("/tabelData")
+@app.route("/tableData")
 def tableData():
 
     return (render_template("tabledata.html")
