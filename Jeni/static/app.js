@@ -131,7 +131,7 @@ d3.json(url).then((data) => {
     // Plotly.newPlot("bubble", bubbleData, bubbbleLayout);
 
     // donut chart
-    https://plotly.com/javascript/pie-charts/
+    //https:plotly.com/javascript/pie-charts/
 
     var donutData = [{
         values: [16, 1, 35, 14, 8, 5, 522, 1, 1],

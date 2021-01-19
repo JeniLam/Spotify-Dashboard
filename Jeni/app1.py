@@ -74,6 +74,12 @@ def playlist_analysis():
     return (render_template("page03.html")
             )
 
+@app.route("/tabelData")
+def tableData():
+
+    return (render_template("tabledata.html")
+            )
+
 @app.route("/api/v1.0/data")
 def all_data():
     # Create our session (link) from Python to DB
