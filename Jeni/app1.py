@@ -68,6 +68,11 @@ def welcome():
     return (render_template("index.html")
             )
 
+@app.route("/page03")
+def playlist_analysis():
+
+    return (render_template("page03.html")
+            )
 
 @app.route("/api/v1.0/data")
 def all_data():
@@ -82,7 +87,7 @@ def all_data():
     # close session
     session.close()
 
-    # create a dictionary frpom the row data and append to a list of all data
+    # create a dictionary from the row data and append to a list of all data
     all_data = []
     for title, artist, top_genre, year, energy, dancability, bpm, dB, duration_in_seconds, acousticness, popularity in results:
         music_dict = {}
@@ -102,28 +107,27 @@ def all_data():
     return jsonify(all_data)
 
 
-# @app.route("/api/v1.0/genrebyyear")
-# def genre_data():
-#     # Create our session (link) from Python to DB
-#     session = Session(engine)
+@app.route("/api/v1.0/genrebyyear")
+def genre_data():
+    # Create our session (link) from Python to DB
+    session = Session(engine)
 
-#     # Query all Data needed for graphs to jsonify
-#     # column names: title, artist, top_genre, year, bpm, energy, dancability, dB, live, valence, duration_in_seconds, acousticness, speechiness,popularity
-#     results = session.query(songs.top_genre, songs.year).all()
-#     print(results)
+    # Query all Data needed for graphs to jsonify
+    # column names: title, artist, top_genre, year, bpm, energy, dancability, dB, live, valence, duration_in_seconds, acousticness, speechiness,popularity
+    results = session.query(songs.top_genre, songs.year).all()
 
-#     # close session
-#     session.close()
+    # close session
+    session.close()
 
-#     # create a dictionary frpom the row data and append to a list of all data
-#     genre_data = []
-#     for top_genre, year in results:
-#         genre_dict = {}
-#         genre_dict['top_genre'] = top_genre
-#         genre_dict['year'] = year
-#         genre_data.append(genre_dict)
+    # create a dictionary frpom the row data and append to a list of all data
+    genre_data = []
+    for top_genre, year in results:
+        genre_dict = {}
+        genre_dict['top_genre'] = top_genre
+        genre_dict['year'] = year
+        genre_data.append(genre_dict)
 
-#     return jsonify(genre_data)
+    return jsonify(genre_data)
 
 
 if __name__ == '__main__':
