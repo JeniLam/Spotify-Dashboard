@@ -185,3 +185,69 @@ d3.json(url).then((data) => {
 
 });
 
+// bpm vs Valence information
+
+bpmurl = "/api/v1.0/bpmVsValence"
+
+d3.json(bpmurl).then((data) => {
+    console.log(data)
+
+    var bpm = data.map(d => d.bpm);
+    console.log(bpm)
+
+    var valence = data.map(d => d.valence);
+    console.log(valence)
+
+    // scatter plot
+    var scatterTrace = {
+        x: bpm,
+        y: valence,
+        type: "scatter",
+        mode: "markers",
+        marker: {
+            size: 10,
+            color: "#00e600"
+        }
+    }
+
+    var scatterData = [scatterTrace];
+
+    var scatterLayout = {
+        plot_bgcolor: "black",
+        paper_bgcolor: "#FFF3",
+        font: {
+            color: "white"
+        },
+        xaxis: {
+            title: {
+                text: 'BPM',
+                font: {
+                    size: 18,
+                    color: 'white'
+                }},
+            range: [0, 210],
+                tickcolor: "white"
+            },
+            yaxis: {
+                title: {
+                    text: 'Valence',
+                    font: {
+                        size: 18,
+                        color: 'white'
+                    }},
+                range: [0, 100],
+                tickcolor: "white"
+            },
+            title: {
+                text: "BPM vs Valence",
+                font: {
+                    color: "White"
+                }
+            }
+        };
+
+        Plotly.newPlot("scatter", scatterData, scatterLayout);
+
+        // ttest for java - https://www.npmjs.com/package/ttest
+
+    });
