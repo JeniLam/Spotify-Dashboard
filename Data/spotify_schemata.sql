@@ -2,7 +2,7 @@
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-CREATE TABLE "songs2010-2019" (
+CREATE TABLE "kagglesongs" (
     "title" varchar   NOT NULL,
     "artist" varchar   NOT NULL,
     "top_genre" varchar   NOT NULL,

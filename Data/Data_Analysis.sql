@@ -1,5 +1,6 @@
-CREATE TABLE "Top_Songs_2010-2019" (
-    "title" varchar   NOT NULL,
+CREATE TABLE "kagglesongs" (
+"index" int PRIMARY KEY,
+    "title" varchar  NOT NULL,
     "artist" varchar   NOT NULL,
     "top_genre" varchar   NOT NULL,
     "year" int   NOT NULL,

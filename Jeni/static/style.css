@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    top: 5;
+    top: 10;
   }
 
 
@@ -103,3 +103,19 @@ p {
         transform: translate(50%, 50%);
     }
 }
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* Set the fixed height of the footer here */
+    /* height: 10px;
+    padding-top: 20px;
+    padding-bottom: 40px; */
+    text-align: center;
+    background-color: black;
+  }
+  
+  #footer p {
+    margin: 0;
+    font-size: 16px;
+  }

@@ -135,6 +135,28 @@ def genre_data():
 
     return jsonify(bpm_valence_data)
 
+@app.route("/api/v1.0/topArtist")
+def top_artist():
+    # Create our session (link) from Python to DB
+    session = Session(engine)
+
+    # Query all Data needed for graphs to jsonify
+    # column names: title, artist, top_genre, year, bpm, energy, dancability, dB, live, valence, duration_in_seconds, acousticness, speechiness,popularity
+    results = session.query(songs.artist,songs.year).all()
+
+    # close session
+    session.close()
+
+    # create a dictionary frpom the row data and append to a list of all data
+    top_artist_data = []
+    for artist, year in results:
+        top_artist__dict = {}
+        top_artist__dict['artist'] = artist
+        top_artist__dict['year'] = year
+        top_artist_data.append(top_artist__dict)
+
+    return jsonify(top_artist_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

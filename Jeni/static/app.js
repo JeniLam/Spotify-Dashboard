@@ -251,3 +251,7 @@ d3.json(bpmurl).then((data) => {
         // ttest for java - https://www.npmjs.com/package/ttest
 
     });
+
+    // top artist
+
+    // "/api/v1.0/topArtist"
