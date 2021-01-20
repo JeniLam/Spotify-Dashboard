@@ -83,6 +83,8 @@ d3.json(url).then((data) => {
         // https://stackoverflow.com/questions/48798507/change-the-background-color-of-a-plot
         plot_bgcolor: "black",
         paper_bgcolor: "#FFF3",
+        width: 500,
+        height: 400,
         xaxis: {
             tickcolor: "white",
             showticklabels: true
@@ -97,39 +99,7 @@ d3.json(url).then((data) => {
 
     Plotly.newPlot("bar", bardata, barlayout)
 
-    // Bubble Chart
-    // var trace2 = {
-    //     x: Object.keys(genreCount),
-    //     y: Object.values(genreCount),
-    //     type: "scatter",
-    //     mode: "markers",
-    //     marker: {
-    //         color: ["#ffff66", "#ff6600", "#ff0000", "#33cc33", "#339966", "#9933ff", "#0000ff", "#ff66cc", "#cccc00"],
-    //         size: Object.values(genreCount),
-    //     }
-    // };
-
-    // var bubbleData = [trace2]
-
-    // var bubbbleLayout = {
-    //     plot_bgcolor: "black",
-    //     paper_bgcolor: "#FFF3",
-    //     xaxis: {
-    //         title: "Genre",
-    //     },
-    //     yaxis: {
-    //         title: "Number of Tracks on Playlist",
-    //         // range: [0, 1000]
-    //     },
-    //     showlegend: false,
-    //     font: {
-    //         color: "white"
-    //     }
-    // };
-
-
-    // Plotly.newPlot("bubble", bubbleData, bubbbleLayout);
-
+    
     // donut chart
     //https:plotly.com/javascript/pie-charts/
 
@@ -168,7 +138,7 @@ d3.json(url).then((data) => {
                 y: .5
             }],
         height: 400,
-        width: 600,
+        width: 500,
         showlegend: true,
         legend: {
             font: {
@@ -215,6 +185,8 @@ d3.json(bpmurl).then((data) => {
     var scatterLayout = {
         plot_bgcolor: "black",
         paper_bgcolor: "#FFF3",
+        width: 500,
+        height: 400,
         font: {
             color: "white"
         },
@@ -254,4 +226,4 @@ d3.json(bpmurl).then((data) => {
 
     // top artist
 
-    // "/api/v1.0/topArtist"
+    artistUrl = "/api/v1.0/topArtist"

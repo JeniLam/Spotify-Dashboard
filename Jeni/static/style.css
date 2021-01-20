@@ -19,13 +19,12 @@ body {
 }
 
 td { 
-    color:tomato;
+    color:goldenrod;
     font-family: Geneva, Verdana, sans-serif;
 }
 
 p {
-    color:gold;
-    cc
+    color:goldenrod
 }
 
 .button {
@@ -47,7 +46,7 @@ p {
     user-select: none;
 }
 .text_header {
-    color: white;
+    color: silver;
     font-size: 30px;
     font-weight: bold;
     font-family: sans-serif;
@@ -105,12 +104,12 @@ p {
 }
 
 #footer {
-    position: absolute;
+    position: bottom;
     bottom: 0;
-    width: 100%; /* Set the fixed height of the footer here */
-    /* height: 10px;
+    width:100%; /* Set the fixed height of the footer here */
+    height: 10px;
     padding-top: 20px;
-    padding-bottom: 40px; */
+    padding-bottom: 40px;
     text-align: center;
     background-color: black;
   }
@@ -119,3 +118,9 @@ p {
     margin: 0;
     font-size: 16px;
   }
+
+
+h4 {
+    color: silver
+}
+

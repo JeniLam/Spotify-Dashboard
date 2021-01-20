@@ -154,6 +154,7 @@ def top_artist():
         top_artist__dict['artist'] = artist
         top_artist__dict['year'] = year
         top_artist_data.append(top_artist__dict)
+        print(top_artist_data)
 
     return jsonify(top_artist_data)
 
