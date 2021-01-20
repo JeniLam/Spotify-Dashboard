@@ -86,3 +86,11 @@ body {
         transform: translate(50%, 50%);
     }
 }
+
+.col-6 {
+    text-align: center
+}
+
+.card {
+    text-decoration-color: goldenrod;
+}

@@ -83,7 +83,7 @@ d3.json(url).then((data) => {
         // https://stackoverflow.com/questions/48798507/change-the-background-color-of-a-plot
         plot_bgcolor: "black",
         paper_bgcolor: "#FFF3",
-        width: 500,
+        width: 625,
         height: 400,
         xaxis: {
             tickcolor: "white",
@@ -120,12 +120,6 @@ d3.json(url).then((data) => {
     var donutLayout = {
         plot_bgcolor: "black",
         paper_bgcolor: "#FFF3",
-        title: {
-            text: 'Genre Breakdown',
-            font: {
-                color: "white"
-            }
-        },
         annotations: [
             {
                 font: {
@@ -138,7 +132,7 @@ d3.json(url).then((data) => {
                 y: .5
             }],
         height: 400,
-        width: 500,
+        width: 625,
         showlegend: true,
         legend: {
             font: {
@@ -185,7 +179,7 @@ d3.json(bpmurl).then((data) => {
     var scatterLayout = {
         plot_bgcolor: "black",
         paper_bgcolor: "#FFF3",
-        width: 500,
+        width: 625,
         height: 400,
         font: {
             color: "white"
