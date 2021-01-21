@@ -99,7 +99,7 @@ def all_data():
 
 
 @app.route("/api/v1.0/bpmVsValence")
-def genre_data():
+def bpm_data():
     # Create our session (link) from Python to DB
     session = Session(engine)
 
@@ -120,6 +120,27 @@ def genre_data():
 
     return jsonify(bpm_valence_data)
 
+@app.route("/api/v1.0/popularVsValence")
+def popular_data():
+    # Create our session (link) from Python to DB
+    session = Session(engine)
+
+    # Query all Data needed for graphs to jsonify
+    # column names: title, artist, top_genre, year, bpm, energy, dancability, dB, live, valence, duration_in_seconds, acousticness, speechiness,popularity
+    results = session.query(songs.popularity, songs.valence).all()
+
+    # close session
+    session.close()
+
+    # create a dictionary frpom the row data and append to a list of all data
+    popularity_valence_data = []
+    for popularity, valence in results:
+        pop_val__dict = {}
+        pop_val__dict['popularity'] = popularity
+        pop_val__dict['valence'] = valence
+        popularity_valence_data.append(pop_val__dict)
+
+    return jsonify(popularity_valence_data)
 
 @app.route("/api/v1.0/topArtist")
 def top_artist():

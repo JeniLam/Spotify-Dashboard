@@ -218,6 +218,70 @@ d3.json(bpmurl).then((data) => {
 
     });
 
-    // top artist
+    // Popularity vs Valence
 
-    artistUrl = "/api/v1.0/topArtist"
+    popUrl = "/api/v1.0/popularVsValence"
+    d3.json(popUrl).then((data) => {
+        console.log(data)
+    
+        var pop = data.map(d => d.popularity);
+        console.log(pop)
+    
+        var valence = data.map(d => d.valence);
+        console.log(valence)
+    
+        // scatter plot
+        var scatter2Trace = {
+            x: pop,
+            y: valence,
+            type: "scatter",
+            mode: "markers",
+            marker: {
+                size: 10,
+                color: "#ff80df"
+            }
+        }
+    
+        var scatter2Data = [scatter2Trace];
+    
+        var scatter2Layout = {
+            plot_bgcolor: "black",
+            paper_bgcolor: "#FFF3",
+            width: 625,
+            height: 400,
+            font: {
+                color: "white"
+            },
+            xaxis: {
+                title: {
+                    text: 'Popularity',
+                    font: {
+                        size: 18,
+                        color: 'white'
+                    }},
+                range: [-10, 100],
+                    tickcolor: "white"
+                },
+                yaxis: {
+                    title: {
+                        text: 'Valence',
+                        font: {
+                            size: 18,
+                            color: 'white'
+                        }},
+                    range: [0, 100],
+                    tickcolor: "white"
+                },
+                title: {
+                    text: "Track Popularity vs Valence",
+                    font: {
+                        color: "White"
+                    }
+                }
+            };
+    
+            Plotly.newPlot("scatter2", scatter2Data, scatter2Layout);
+    
+            // ttest for java - https://www.npmjs.com/package/ttest
+    
+        });
