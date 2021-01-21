@@ -2,7 +2,7 @@
 // function makeResponsive() {
 // Add boiler plate information for SVG area, margins, etc
 var svgWidth = 900;
-var svgHeight = 600;
+var svgHeight = 800;
 
 // Define the chart's margins as an object
 var margin = {
@@ -26,15 +26,15 @@ var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Initial Params
-var chosenXAxis = "energy";
+var chosenXAxis = "dB";
 var chosenYAxis = "valence";
 
 // function used for updating x-scale var upon click on axis label - taken from Day 3 activity 12
 function xScale(scatterData, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(scatterData, d => d[chosenXAxis]) * 0.8,
-        d3.max(scatterData, d => d[chosenXAxis]) * 1.2
+        .domain([d3.min(scatterData, d => d[chosenXAxis]),
+        d3.max(scatterData, d => d[chosenXAxis])
         ])
         .range([0, chartWidth]);
 
@@ -46,8 +46,8 @@ function xScale(scatterData, chosenXAxis) {
 function yScale(scatterData, chosenYAxis) {
     // create scales
     var yLinearScale = d3.scaleLinear()
-        .domain([d3.min(scatterData, d => d[chosenYAxis]) * 0.8,
-        d3.max(scatterData, d => d[chosenYAxis]) * 1.2
+        .domain([d3.min(scatterData, d => d[chosenYAxis]),
+        d3.max(scatterData, d => d[chosenYAxis])
         ])
         .range([chartHeight, 0]);
 
@@ -134,8 +134,8 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     // labels for tool tip based on the axis selected
     // should use a swtich statement instead?
     // xaxis
-    if (chosenXAxis === "energy") {
-        xlabel = "Energy: ";
+    if (chosenXAxis === "dB") {
+        xlabel = "dB: ";
     }
     else if (chosenXAxis === "year") {
         xlabel = "Year of Release:";
@@ -195,10 +195,10 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
 
     // parse data - getting all strings into numerical form
     scatterData.forEach(function (d) {
-        d.year = +d.year;
+        // d.year = +d.year;
         d.bpm = +d.bpm;
-        d.energy = +d.engergy;
-        d.dancability = +d.dancability;
+        d.energy = +d.energy;
+        // d.dancability = +d.dancability;
         d.dB = +d.dB;
         d.live = +d.live;
         d.valence = +d.valence;
@@ -266,26 +266,29 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
     var xLabelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`);
 
-    var energyLabel = xLabelsGroup.append("text")
+    var dBLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
-        .attr("value", "energy") // value to grab for event listener
+        .attr("value", "dB") // value to grab for event listener
         .classed("active", true)
-        .text("Energy");
+        .text("dB")
+        .style("fill", "goldenrod");
 
     var yearLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
         .attr("value", "year") // value to grab for event listener
         .classed("inactive", true)
-        .text("Track Release Year");
+        .text("Track Release Year")
+        .style("fill", "goldenrod");
 
     var dancabilityLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
         .attr("value", "income") // value to grab for event listener
         .classed("inactive", true)
-        .text("Dancability");
+        .text("Dancability")
+        .style("fill", "goldenrod");
 
     // Create group for three y-axis labels
     var yLabelsGroup = chartGroup.append("g")
@@ -298,6 +301,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         .attr("value", "valence") // value to grab for event listener
         .classed("active", true)
         .text("Valence")
+        .style("fill", "goldenrod")
 
     var bpmLabel = yLabelsGroup.append("text")
         .attr("y", 20 - margin.left)
@@ -306,6 +310,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         .attr("value", "bpm") // value to grab for event listener
         .classed("inactive", true)
         .text("BPM")
+        .style("fill", "goldenrod")
 
     var durationLabel = yLabelsGroup.append("text")
         .attr("y", 0 - margin.left)
@@ -314,6 +319,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         .attr("value", "duration_in_seconds") // value to grab for event listener
         .classed("inactive", true)
         .text("Track Duration in Seconds")
+        .style("fill", "goldenrod")
 
     // updateToolTip function above csv import
     // commented out below until updateToolTip is finalized
@@ -348,8 +354,8 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
                 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
                 // changes classes to change bold text (set labels not selected as inactive)
-                if (chosenXAxis === "energy") {
-                    energyLabel
+                if (chosenXAxis === "dB") {
+                    dBLabel
                         .classed("active", true)
                         .classed("inactive", false);
                     yearLabel
@@ -363,7 +369,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
                     yearLabel
                         .classed("active", true)
                         .classed("inactive", false);
-                    energyLabel
+                    dBLabel
                         .classed("active", false)
                         .classed("inactive", true);
                     dancabilityLabel
@@ -377,7 +383,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
                     yearLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    energyLabel
+                    dBLabel
                         .classed("active", false)
                         .classed("inactive", true);
                 }
