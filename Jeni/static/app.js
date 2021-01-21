@@ -212,7 +212,7 @@ d3.json(bpmurl).then((data) => {
             }
         };
 
-        Plotly.newPlot("scatter1", scatterData, scatterLayout);
+        Plotly.newPlot("scatter3", scatterData, scatterLayout);
 
         // ttest for java - https://www.npmjs.com/package/ttest
 

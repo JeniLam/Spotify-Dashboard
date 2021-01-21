@@ -26,7 +26,7 @@ var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Initial Params
-var chosenXAxis = "genre";
+var chosenXAxis = "energy";
 var chosenYAxis = "valence";
 
 // function used for updating x-scale var upon click on axis label - taken from Day 3 activity 12
@@ -134,14 +134,14 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     // labels for tool tip based on the axis selected
     // should use a swtich statement instead?
     // xaxis
-    if (chosenXAxis === "top_genre") {
-        xlabel = "Genre: ";
+    if (chosenXAxis === "energy") {
+        xlabel = "Energy: ";
     }
     else if (chosenXAxis === "year") {
         xlabel = "Year of Release:";
     }
     else {
-        xlabel = "Artist";
+        xlabel = "Dancability";
     }
 
     // yaxis
@@ -167,7 +167,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .style("border-radius", "5px")
         .style("padding", "5px")
         .html(function (d) {
-            return (`<strong>${d.artist}<br>${xlabel} ${d[chosenXAxis]}<br>${ylabel} ${d[chosenYAxis]}</strong>`);
+            return (`<strong>${d.artist}<br>${d.title}<br>${xlabel} ${d[chosenXAxis]}<br>${ylabel} ${d[chosenYAxis]}</strong>`);
         });
     
     // create tooltip for 
@@ -266,12 +266,12 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
     var xLabelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`);
 
-    var genreLabel = xLabelsGroup.append("text")
+    var energyLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
-        .attr("value", "top_genre") // value to grab for event listener
+        .attr("value", "energy") // value to grab for event listener
         .classed("active", true)
-        .text("Genre");
+        .text("Energy");
 
     var yearLabel = xLabelsGroup.append("text")
         .attr("x", 0)
@@ -280,12 +280,12 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         .classed("inactive", true)
         .text("Track Release Year");
 
-    var artistLabel = xLabelsGroup.append("text")
+    var dancabilityLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
         .attr("value", "income") // value to grab for event listener
         .classed("inactive", true)
-        .text("Artist");
+        .text("Dancability");
 
     // Create group for three y-axis labels
     var yLabelsGroup = chartGroup.append("g")
@@ -348,14 +348,14 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
                 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
                 // changes classes to change bold text (set labels not selected as inactive)
-                if (chosenXAxis === "top_genre") {
-                    genreLabel
+                if (chosenXAxis === "energy") {
+                    energyLabel
                         .classed("active", true)
                         .classed("inactive", false);
                     yearLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    artistLabel
+                    dancabilityLabel
                         .classed("active", false)
                         .classed("inactive", true);
                 }
@@ -363,21 +363,21 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
                     yearLabel
                         .classed("active", true)
                         .classed("inactive", false);
-                    genreLabel
+                    energyLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    artistLabel
+                    dancabilityLabel
                         .classed("active", false)
                         .classed("inactive", true);
                 }
                 else {
-                    artistLabel
+                    dancabilityLabel
                         .classed("active", true)
                         .classed("inactive", false);
                     yearLabel
                         .classed("active", false)
                         .classed("inactive", true);
-                    genreLabel
+                    energyLabel
                         .classed("active", false)
                         .classed("inactive", true);
                 }
