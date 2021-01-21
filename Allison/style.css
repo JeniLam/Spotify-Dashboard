@@ -91,6 +91,13 @@ body {
     text-align: center
 }
 
-.card {
-    text-decoration-color: goldenrod;
+.table {
+    max-height: 650px;
 }
+
+  /* https://css-tricks.com/position-sticky-and-table-headers/ */
+  th {
+    position:sticky;
+    top: 0;
+
+  }

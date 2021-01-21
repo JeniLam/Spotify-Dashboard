@@ -21,6 +21,25 @@ body {
 td { 
     color:goldenrod;
     font-family: Geneva, Verdana, sans-serif;
+    font-size: 8px
+}
+th { 
+    color:goldenrod;
+    font-family: Geneva, Verdana, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+label { 
+    color:goldenrod;
+    font-family: Geneva, Verdana, sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.form-control {
+    background-color:gray;
 }
 
 p {
@@ -124,3 +143,16 @@ h4 {
     color: silver
 }
 
+#filters {
+    background-color: #FFF3 ;
+    font: white;
+
+}
+
+.table {
+    max-height:550px;
+  }
+.filter, .list-group-item{
+    background-color:rgba(49, 49, 47, 0.2);
+
+}

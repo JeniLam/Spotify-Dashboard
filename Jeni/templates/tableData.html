@@ -12,20 +12,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="/">gogoGaAGA Home
-              </a>
+  <div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="neon">
+                <span class="text" data-text="Playlist Analysis">Playlist</span>
+                <span class="gradient"></span>
+                <span class="spotlight"></span>
             </div>
-          </div>
-        </nav>
-      <br>
-        <div class="hero text-center">
-          <h1 class="header">PLAYLIST ANALYSIS</h1>
         </div>
-      <br>
+        <div class="col-2">
+            <div>
+                <a href='/' class="btn btn-outline-secondary" role="button"> Home </a>
+            </div>
+            <div>
+                <a href='page03' class="btn btn-outline-secondary" role="button"> Data </a>
+            </div>
+        </div>
+        <br><br><br><br>
         <div class="container">
           <div class="row margin-top-50">
             <div class="col-md-2">
@@ -37,33 +41,47 @@
                       <div class="form-group">
                         <ul class="list-group" id="filters">
                           <li class="filter list-group-item">
-                            <label for="date">Enter a Value</label>
+                            <label for="date">Artist</label>
                             <input class="form-control" id="datetime" type="text" placeholder="">
                           </li>
+                          <li class="filter list-group-item">
+                            <label for="city">Title</label>
+                            <input class="form-control" id="city" type="text" placeholder="">
+                            </li>
+                            <li class="filter list-group-item">
+                            <label for="state">Genre</label>
+                            <input class="form-control" id="state" type="text" placeholder="">
+                            </li>
+                            <li class="filter list-group-item">
+                            <label for="country">Year</label>
+                            <input class="form-control" id="country" type="text" placeholder="">
                         </ul>
                       </div>
-                      <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                      <button id="filter-btn" type="button" class="btn btn-outline-secondary">Filter Table</button>
+                      <button id="filter-btn" type="button" class="btn btn-outline-secondary">Reset Filter Table</button>
                     </form>
                   </div>
                 </div>
               </aside>
             </div>
-            <div class="col-md-10">
-              <div id="table-area" class="">
-                <table id="ufo-table" class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th class="table-head">Acouticness</th>
-                      <th class="table-head">Artist</th>
-                      <th class="table-head">BPM</th>
-                      <th class="table-head">dB</th>
-                      <th class="table-head">Dancability</th>
-                      <th class="table-head">Duration(in Seconds)</th>
-                      <th class="table-head">Energy</th>
-                      <th class="table-head">Popularity</th>
-                      <th class="table-head">Title</th>
-                      <th class="table-head">Genre</th>
-                      <th class="table-head">Year</th>
+            <br><br><br>
+            <div class="col-sm-10 col-md-10">
+              <div class="table table-responsive">
+                <table class="table table-bordered table-dark">
+                  <thead class="thead-dark">
+                    <tr style="text-align: left;">
+                      
+                      <th>Acousticness</th>
+                      <th>Artist</th>
+                      <th>BPM</th>
+                      <th>dB</th>
+                      <th>Dancability</th>
+                      <th>Duration(in Seconds)</th>
+                      <th>Energy</th>
+                      <th>Popularity</th>
+                      <th>Title</th>
+                      <th>Genre</th>
+                      <th>Year</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
