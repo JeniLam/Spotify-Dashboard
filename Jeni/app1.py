@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+
 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
@@ -30,9 +32,9 @@ session = Session(engine)
 results = session.query(songs.title, songs.artist, songs.top_genre, songs.year, songs.energy, songs.dancability,
                         songs.bpm, songs.dB, songs.duration_in_seconds, songs.acousticness, songs.popularity).all()
 
-bpm2010 = session.query(songs.bpm).filter(songs.year == 2010)
+# bpm2010 = session.query(songs.bpm).filter(songs.year == 2010)
 
-print(bpm2010)
+# print(bpm2010)
 
 # close session
 session.close()
@@ -63,6 +65,10 @@ def tableData():
 
     return (render_template("tabledata.html")
             )
+
+@app.route("/d3Page")
+def the_d3_page():
+   return (render_template("d3page.html"))
 
 
 @app.route("/api/v1.0/data")
@@ -120,6 +126,7 @@ def bpm_data():
 
     return jsonify(bpm_valence_data)
 
+
 @app.route("/api/v1.0/popularVsValence")
 def popular_data():
     # Create our session (link) from Python to DB
@@ -141,6 +148,7 @@ def popular_data():
         popularity_valence_data.append(pop_val__dict)
 
     return jsonify(popularity_valence_data)
+
 
 @app.route("/api/v1.0/topArtist")
 def top_artist():
@@ -164,6 +172,15 @@ def top_artist():
         print(top_artist_data)
 
     return jsonify(top_artist_data)
+
+
+@app.route("/api/v1.0/table_analysis")
+def table_analysis():
+
+    results = pd.read_sql('''SELECT * FROM kagglesongs''', conn)
+    csv_results = results.to_csv()
+
+    return csv_results
 
 
 if __name__ == '__main__':
