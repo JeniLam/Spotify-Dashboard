@@ -1,7 +1,7 @@
 
 // function makeResponsive() {
 // Add boiler plate information for SVG area, margins, etc
-var svgWidth = 1000;
+var svgWidth = 1100;
 var svgHeight = 800;
 
 // Define the chart's margins as an object
