@@ -18,3 +18,4 @@ Data was pulled from Kaggle - [Top Spotify songs from 2010-2019 = BY YEAR] (http
 Landing Page
 - Charts
 - Table of Data
+- Interactive chart
