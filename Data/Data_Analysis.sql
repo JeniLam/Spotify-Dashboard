@@ -15,3 +15,7 @@ CREATE TABLE "kagglesongs" (
     "speechiness" int   NOT NULL,
     "popularity" int   NOT NULL
 );
+
+select * from kagglesongs
+
+select * from kagglesongs where artist = 'Adele'

@@ -151,7 +151,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     else if (chosenYAxis === "bpm") {
         ylabel = "BPM: ";
     }
-    else  {
+    else {
         ylabel = "Track Duration in Seconds: ";
     }
 
@@ -169,20 +169,20 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .html(function (d) {
             return (`<strong>${d.artist}<br>${d.title}<br>${xlabel} ${d[chosenXAxis]}<br>${ylabel} ${d[chosenYAxis]}</strong>`);
         });
-    
+
     // create tooltip for 
 
     // Create tooltip in chartGroup
     chartGroup.call(toolTip);
 
-    
+
     // Create "mouseover" event listener to display tooltip
     circlesGroup.on("mouseover", function (data) {
-       return toolTip.show(data, this);
+        return toolTip.show(data, this);
     })
         // Create "mouseout" event listener to hide tooltip
         .on("mouseout", function (data) {
-           return toolTip.hide(data);
+            return toolTip.hide(data);
         });
 
     return circlesGroup;
@@ -202,7 +202,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         d.dB = +d.dB;
         d.live = +d.live;
         d.valence = +d.valence;
-        d.duration_in_seconds = +d.duration_in_seconds;        
+        d.duration_in_seconds = +d.duration_in_seconds;
         d.acousticness = +d.acousticness;
         d.speechiness = +d.speechiness;
         d.popularity = +d.popularity;
@@ -239,7 +239,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
         .attr("cx", d => xLinearScale(d[chosenXAxis]))
         .attr("cy", d => yLinearScale(d[chosenYAxis]))
         .attr("r", 20)
-        .attr("fill", "purple")
+        .attr("fill", "gray")
         .attr("opacity", "0.6");
 
     // add state labels to the data points
@@ -257,10 +257,10 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
     circleText.attr("dx", d => xLinearScale(d[chosenXAxis]))
         .attr("dy", d => yLinearScale(d[chosenYAxis]))
         .text(d => d.index)
-        .classed("stateText", true);
-    // .attr("font-size", "12px")
-    // .attr("text-anchor", "middle")
-    // ;
+        .classed("stateText", true)
+        .attr("font-size", "12px")
+        .attr("text-anchor", "middle")
+        ;
 
     // Create group for three x-axis labels
     var xLabelsGroup = chartGroup.append("g")

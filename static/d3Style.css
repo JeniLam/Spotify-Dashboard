@@ -5,6 +5,13 @@ h2 {
   font-weight: bold;
 }
 
+.x-axis, .y-axis {    
+  color:goldenrod;
+  font-family: Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
 .aText {
   font-family: sans-serif;
   font-size: 16px;
