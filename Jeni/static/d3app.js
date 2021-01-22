@@ -1,7 +1,7 @@
 
 // function makeResponsive() {
 // Add boiler plate information for SVG area, margins, etc
-var svgWidth = 900;
+var svgWidth = 1000;
 var svgHeight = 800;
 
 // Define the chart's margins as an object
@@ -285,7 +285,7 @@ d3.csv("/api/v1.0/table_analysis").then(function (scatterData) {
     var dancabilityLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
-        .attr("value", "income") // value to grab for event listener
+        .attr("value", "dancability") // value to grab for event listener
         .classed("inactive", true)
         .text("Dancability")
         .style("fill", "goldenrod");
